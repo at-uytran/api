@@ -20,6 +20,12 @@ Bundler.require(*Rails.groups)
 module Api
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
+    # config.before_configuration do
+    #   env_file = File.join(Rails.root, 'config', 'local_env.yml')
+    #   YAML.load(File.open(env_file)).each do |key, value|
+    #     ENV[key.to_s] = value
+    #   end if File.exists?(env_file)
+    # end
     config.load_defaults 5.2
 
     # Settings in config/environments/* take precedence over those specified here.
@@ -31,5 +37,14 @@ module Api
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins ["http://localhost:4200", "https://uytran.tk", "http://uytran.tk"]
+        resource "*",
+          headers: :any,
+          expose: ["Authorization"],
+          methods: %i[get post options put patch delete]
+      end
+    end
   end
 end

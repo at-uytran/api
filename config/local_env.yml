@@ -1,0 +1,2 @@
+DEVELOPMENT_CLIENT_URL: "http://localhost:4200"
+PRODUCTION_CLIENT_URL: "https://uytran.tk"
