@@ -1,0 +1,4 @@
+cable_url: "wss://api.uytran.tk/api/v1/cable"
+allowed_request_origins:
+  - 'https://uytran.tk'
+  - /https:\/\/uytran.tk/
