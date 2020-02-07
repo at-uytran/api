@@ -39,7 +39,7 @@ module Api
     config.api_only = true
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins ["http://localhost:4200", "https://uytran.tk", "http://uytran.tk"]
+        origins Settings.allowed_request_origins
         resource "*",
           headers: :any,
           expose: ["Authorization"],
